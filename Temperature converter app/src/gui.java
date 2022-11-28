@@ -1,7 +1,8 @@
-import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.LabelView;
+import java.awt.*;
+
 
 
  class gui implements ActionListener {
@@ -10,13 +11,20 @@ import javax.swing.text.LabelView;
 	private static JLabel label, labelF, labelC, labelR;
 	private static JButton button, button1, buttonF, buttonC, goHomeC, goHomeF;
 	private static JTextField TextF;
+//	private Toolkit tool;
+//	private Dimension dimension;
+	
 	private gui (){
 	
+	//opening location	
+
 	//panel and frame setup
 	frame = new JFrame();
 	panel = new JPanel();
 	
-	frame.setSize(400,600);
+	
+	frame.setLocation(500,230);
+	frame.setSize(300,300);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	frame.add(panel);
@@ -24,7 +32,8 @@ import javax.swing.text.LabelView;
 	panel.setLayout(null);
 	
 	label = new JLabel("select converter");
-	label.setBounds(10,20,95,30);
+	label.setBounds(10,20,150,30);
+	label.setFont(new Font("title", Font.ITALIC, 20));
 	panel.add(label);
 	
 	//bottons
@@ -43,7 +52,8 @@ import javax.swing.text.LabelView;
 		frameF = new JFrame();
 		panelF = new JPanel();
 		
-		frameF.setSize(400,600);
+		frameF.setLocation(500,230);
+		frameF.setSize(300,400);
 		frameF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameF.setVisible(true);
 		frameF.add(panelF);
@@ -83,6 +93,7 @@ import javax.swing.text.LabelView;
 		frameC = new JFrame();
 		panelC = new JPanel();
 		
+		frameC.setLocation(500,230);
 		frameC.setSize(400,600);
 		frameC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameC.setVisible(true);
@@ -148,16 +159,28 @@ import javax.swing.text.LabelView;
 		}
 		
 		if (e.getSource() == button) {
-			int input = Integer.parseInt(TextF.getText());
-			double output = toCelsius(input);
+			String input = TextF.getText();
+			try {
+			double value = Double.valueOf(input);
+			double output = toCelsius(value);
 			labelR.setText(""+output);
 			System.out.println(input);
+			}catch (NumberFormatException P) {
+				JOptionPane.showMessageDialog(null, "Invalid imput please retry again", "Error", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
 		}
 		else if (e.getSource() == button1) {
-			int input = Integer.parseInt(TextF.getText());
-			double output = toFahrenheit(input);
+			
+			String input = TextF.getText();
+			try {
+			double value = Double.valueOf(input);
+			double output = toFahrenheit(value);
 			labelR.setText(""+output);
 			System.out.println(input);
+			}catch (NumberFormatException P) {
+				JOptionPane.showMessageDialog(null, "Invalid imput please retry again", "Error", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 		if (e.getSource() == goHomeC) {
 			frameC.dispose();
