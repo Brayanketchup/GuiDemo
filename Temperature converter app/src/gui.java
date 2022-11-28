@@ -1,9 +1,6 @@
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.*;
-
-
 
  class gui implements ActionListener {
 	private static JFrame frame, frameF, frameC;
@@ -11,12 +8,9 @@ import java.awt.*;
 	private static JLabel label, labelF, labelC, labelR;
 	private static JButton button, button1, buttonF, buttonC, goHomeC, goHomeF;
 	private static JTextField TextF;
-//	private Toolkit tool;
-//	private Dimension dimension;
 	
 	private gui (){
 	
-	//opening location	
 
 	//panel and frame setup
 	frame = new JFrame();
@@ -147,13 +141,11 @@ import java.awt.*;
 		// TODO Auto-generated method stub
 		if (e.getSource() == buttonF) {
 			frame.setSize(401,600);
-			System.out.println("F");
 			frame.dispose();
 			fahrenheit();
 		}
 		else if (e.getSource() == buttonC) {
 			frame.setSize(401,600);
-			System.out.println("C");
 			frame.dispose();
 			celsius();
 		}
@@ -164,7 +156,6 @@ import java.awt.*;
 			double value = Double.valueOf(input);
 			double output = toCelsius(value);
 			labelR.setText(""+output);
-			System.out.println(input);
 			}catch (NumberFormatException P) {
 				JOptionPane.showMessageDialog(null, "Invalid imput please retry again", "Error", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -177,7 +168,6 @@ import java.awt.*;
 			double value = Double.valueOf(input);
 			double output = toFahrenheit(value);
 			labelR.setText(""+output);
-			System.out.println(input);
 			}catch (NumberFormatException P) {
 				JOptionPane.showMessageDialog(null, "Invalid imput please retry again", "Error", JOptionPane.INFORMATION_MESSAGE);
 			}
